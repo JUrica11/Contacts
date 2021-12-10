@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<style>
+  input[type=text],
+  select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-style: italic;
+  }
+  input[type=email],
+  select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-style: italic;
+  }
+  input[type=tel],
+  select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type=submit] {
+    width: 100%;
+    background-color: #3b56dc;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=submit]:hover {
+    background-color: lightblue;
+  }
+  div {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+  }
+  body {
+    font-family: Arial;
+    color: black;
+  }
+  .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  .left {
+    left: 0;
+    background-color: white;
+  }
+  .right {
+    right: 0;
+    background-color: white;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin-top: 300px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .table {
+    display: table;
+    table-layout: fixed;
+    width: 500%;
+    padding: 3px;
+  }
+  .caption {
+    display: table-caption;
+    font-weight: bold;
+    text-align: left;
+  }
+  .thead {
+    display: table-header-group;
+    font-weight: bold;
+  }
+  .tbody {
+    display: table-row-group;
+  }
+  .tr {
+    display: table-row;
+  }
+  .th {
+    border-bottom: 1px dashed #cccccc;
+  }
+  .tr:nth-child(odd) {
+    background: #f5f5f5;
+  }
+  .th,
+  .td {
+    display: table-cell;
+  }
+  .td {
+    padding: 20px;
+  }
+  .label {
+    display: none;
+  }
+  @media all and (max-width: 1000px) {
+    .thead {
+      display: none;
+    }
+    .tr {
+      display: block;
+      margin-bottom: 1.5em;
+      padding: 30px;
+    }
+    .td {
+      display: inherit;
+      padding: 0;
+      text-align: center;
+    }
+    .label {
+      font-weight: bold;
+      display: inline-block;
+      min-width: 200px;
+    }
+    .submit {
+      align-self: auto;
+    }
+  }
+</style>
+<body>
+<div class="split right">
+  <div class="centered">
+    <h3>Forma za unos kontakata</h3>
+    <div>
+      <form id="form">
+        <label for="name">Ime </label>
+        <input type="text" id="name" name="name" placeholder="Ime.." required>
+        <label for="surname">Prezime</label>
+        <input type="text" id="surname" name="lastname" placeholder="Prezime.." required>
+        <label for="street">Unesite ulicu i kućni broj:</label>
+        <input id="street" type="text" name="text" required placeholder="npr.Ilica 217" required>
+        <p>
+          <label for="phone">Unesite broj telefona:</label>
+          <input type="tel" id="phone" name="phone" placeholder="" required>
+        </p>
+        <label >Unesite email:</label>
+        <input id="email" type="email" required placeholder="npr.peroperic@yahoo.com">
+
+        <label for="zip">Poštanski broj</label>
+        <input type="text" id="zip" name="zip" placeholder="Poštanski broj.." required>
+        <label for="city">Grad</label>
+        <select id="city" name="grad">
+          <option value="ZG">Zagreb</option>
+          <option value="ST">Split</option>
+          <option value="RI">Rijeka</option>
+          <option value="ZG">Varaždin</option>
+          <option value="ST">Osijek</option>
+          <option value="RI">Dubrovnik</option>
+          <option value="ZG">Zadar</option>
+          <option value="ST">Vukovar</option>
+          <option value="RI">Šibenik</option>
+        </select>
+        <input type="submit" id="submit" value="Potvrdi">
+      </form>
+    </div>
+  </div>
+</div>
+<div class="split left">
+  <div class="left">
+    <p>
+    <h2 class="caption" id="contacts-caption-text">Lista unesenih kontakata</h2>
+    </p>
+    <div class="contacts-header thead">
+      <span class="th" id="th-name">Ime</span>
+      <span class="th" id="th-prezime">Prezime</span>
+      <span class="th" id="th-street">Ulica i kucni broj</span>
+      <span class="th" id="th-phone">Telefon</span>
+      <span class="th" id="th-email">Email</span>
+      <span class="th" id="th-zip">Poštanski broj</span>
+      <span class="th" id="th-grad">Grad</span>
+    </div>
+    <ul class="tbody">
+    </ul>
+      <input class="submit" type="submit" id="clearForm" value="Očisti formu">
+      <label></label>
+  </div>
+</div>
+<script src="bundle.js"></script>
+</body>
+</html>
