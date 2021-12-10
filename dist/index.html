@@ -23,6 +23,27 @@
     box-sizing: border-box;
     font-style: italic;
   }
+  #myTable1 {
+    border-collapse: collapse;
+    width: 100%;
+    }
+#myTable1 th {
+    background-color: #009999;
+    color: black;
+    width : 100px;
+}
+
+.table-fixed{
+
+}
+  #myTable1 .tbody1{
+    height:150px;
+    overflow-y:auto;
+ }
+ #myTable1 thead,.tbody1{
+
+    display:block;
+  }
   input[type=tel],
   select {
     width: 100%;
@@ -32,6 +53,17 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+  }
+   input[type=number],
+  select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-style: italic;
   }
   input[type=submit] {
     width: 100%;
@@ -163,18 +195,16 @@
         <label for="name">Ime </label>
         <input type="text" id="name" name="name" placeholder="Ime.." required>
         <label for="surname">Prezime</label>
-        <input type="text" id="surname" name="lastname" placeholder="Prezime.." required>
+        <input type="text" id="surname" name="surname" placeholder="Prezime.." required>
         <label for="street">Unesite ulicu i kućni broj:</label>
-        <input id="street" type="text" name="text" required placeholder="npr.Ilica 217" required>
-        <p>
-          <label for="phone">Unesite broj telefona:</label>
-          <input type="tel" id="phone" name="phone" placeholder="" required>
-        </p>
+        <input id="street" type="text" name="street" required placeholder="npr.Ilica 217" required>
+        <label for="phone">Unesite broj telefona:</label>
+        <input type="tel" id="phone" name="phone" placeholder="" required>
         <label >Unesite email:</label>
-        <input id="email" type="email" required placeholder="npr.peroperic@yahoo.com">
+        <input id="email" name="email" type="email" required placeholder="npr.peroperic@yahoo.com">
 
         <label for="zip">Poštanski broj</label>
-        <input type="text" id="zip" name="zip" placeholder="Poštanski broj.." required>
+        <input type="number" id="zip" name="zip" placeholder="Poštanski broj.." required>
         <label for="city">Grad</label>
         <select id="city" name="grad">
           <option value="ZG">Zagreb</option>
@@ -194,22 +224,47 @@
 </div>
 <div class="split left">
   <div class="left">
-    <p>
-    <h2 class="caption" id="contacts-caption-text">Lista unesenih kontakata</h2>
-    </p>
-    <div class="contacts-header thead">
-      <span class="th" id="th-name">Ime</span>
-      <span class="th" id="th-prezime">Prezime</span>
-      <span class="th" id="th-street">Ulica i kucni broj</span>
-      <span class="th" id="th-phone">Telefon</span>
-      <span class="th" id="th-email">Email</span>
-      <span class="th" id="th-zip">Poštanski broj</span>
-      <span class="th" id="th-grad">Grad</span>
-    </div>
-    <ul class="tbody">
-    </ul>
+
+    <table class="table table-striped table-bordered table-fixed table-hover table-condensed" style="width: 1000px; align:left;" id="myTable1">
+      <thead>
+      <tr>
+        <th rowspan = '2' style="width:130px;">Ime</th>
+        <th rowspan='2' style="width:130px;">Prezime</th>
+        <th  rowspan='2' style="width:130px;">Ulica i kucni broj</th>
+        <th  rowspan='2'style="width:130px;">Telefon</th>
+        <th rowspan='2' style="width:130px;">Email</th>
+        <th  rowspan='2' style="width:130px;">Postanski broj</th>
+        <th  rowspan='2'style="width:130px;">Grad</th>
+
+
+      </tr>
+      </thead>
+      <tbody class="tbody1">
+
+
+      </tbody>
+      <tr id="hiderow">
+        <td><button onclick="display()"></button></td>
+      </tr>
+    </table>
+
+      <!--<ul class="tbody">
+       <h2 class="caption" id="contacts-caption-text">Lista unesenih kontakata</h2>
+       </p>
+       <div class="contacts-header thead">
+         <span class="th" id="th-name">Ime</span>
+         <span class="th" id="th-prezime">Prezime</span>
+         <span class="th" id="th-street">Ulica i kucni broj</span>
+         <span class="th" id="th-phone">Telefon</span>
+         <span class="th" id="th-email">Email</span>
+         <span class="th" id="th-zip">Poštanski broj</span>
+         <span class="th" id="th-grad">Grad</span>
+       </div>
+
+       </ul>-->
+      <p></p>
       <input class="submit" type="submit" id="clearForm" value="Očisti formu">
-      <label></label>
+    </p>
   </div>
 </div>
 <script src="bundle.js"></script>
